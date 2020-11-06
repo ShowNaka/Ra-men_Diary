@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 2020_11_04_072140) do
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "street", null: false
     t.string "building_name"
     t.float "latitude"
     t.float "longitude"
-    t.integer "type", null: false
+    t.integer "type_id", null: false
     t.text "feelings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

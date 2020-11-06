@@ -1,10 +1,9 @@
 class Shop < ApplicationRecord
-
-
-
-
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to_active_hash :type
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :type
+
+  # validates :type, presence: true
   validates :prefecture, presence: true
-  validates :type, presence: true
+
 end

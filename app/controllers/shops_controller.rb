@@ -6,13 +6,12 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-
   end
 
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      render = :create
+      redirect_to root_path, notice: 'グループを作成しました'
     else
       render = :new
     end
@@ -20,7 +19,14 @@ class ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:name, :prefecture_id, :city, :street, :building_name, :category_id, :feelings)
+    params.require(:shop).permit(
+      :name,
+      :type_id,
+      :prefecture_id,
+      :city,
+      :street,
+      :building_name,
+      :feelings)
   end
 
 
