@@ -1,0 +1,65 @@
+= render "shops/header"
+.main
+  %section.mainvisual
+    .mainvisual__content
+      %h2
+        %br
+        らーめん日記
+      %p.content__text
+        らーめん日記は「らー活」専用アプリです。
+        %br
+        他人のレビューは関係ありません。
+        %br
+        あなただけのレビューアプリです。
+    .picture
+
+
+  .main__fifth
+    .main__fifth__top
+      .main__fifth__top--up
+        ピックアップカテゴリー
+      .main__fifth__top--under
+        = link_to "#", class: "main__fifth__top--under--btn" do
+          新規投稿商品
+    %ul.main__fifth__box
+      - @shops.last(3).each do |shop|
+        %li.main__fifth__box--new
+          =link_to shops_path(shop.id), class: "show-btn" do
+            .comment
+              .comment--name
+                =shop.name .truncate(21)
+  -#             %ul.comment--price
+  -#               %li
+  -#                 ¥
+  -#                 = item.price
+  -#             %p.tax (税込み)   
+  -#         -if item.buyer_id.present? 
+  -#           .item-sold
+  -#             .item-sold-inner
+  -#               SOLD     
+  -# .main__sixth
+  -#   .main__sixth__top
+  -#     .main__sixth__top--up
+  -#       ピックアップブランド
+  -#     .main__sixth__top--under
+  -#       = link_to "#", class: "main__sixth__top--under--btn" do
+  -#         アーカイバー
+  -#   %ul.main__sixth__box
+  -#     - @items.last(3).each do |item|
+  -#       %li.main__fifth__box--new
+  -#         =link_to item_path(item.id), class: "show-btn" do
+  -#           = image_tag item.images[0].src.url, size: '200x200'
+
+  -#           .comment
+  -#             .comment--name
+  -#               =item.name .truncate(21)
+  -#             %ul.comment--price
+  -#               %li
+  -#                 ¥
+  -#                 = item.price
+  -#             %p.tax (税込み)
+  -#         -if item.buyer_id.present? 
+  -#           .item-sold
+  -#             .item-sold-inner
+  -#               SOLD
+= render "shops/footer"

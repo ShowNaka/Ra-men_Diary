@@ -1,0 +1,17 @@
+.shop_index
+  = form_for @shop do |f|
+    店名
+    = f.text_field :name
+    系統
+    = f.collection_select :type_id, Type.all, :id, :name, prompt: "選択してください"
+    都道府県
+    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください"
+    市区町村
+    = f.text_field :city,  { class: ' ', placeholder: '例) 世田谷区', value: '' }
+    番地
+    = f.text_field :street,  { class: ' ', placeholder: '例) 三軒茶屋2-2', value: '' }
+    ビル名・マンション名
+    = f.text_field :building_name,  { class: ' ', placeholder: '例) Tokyoビル1F', value: '' }
+    店の概要（雰囲気・自己評価など）
+    = f.text_area :feelings
+    = f.submit "登録する", class: 'btn'
