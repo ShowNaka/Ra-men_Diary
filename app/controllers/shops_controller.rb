@@ -2,6 +2,8 @@ class ShopsController < ApplicationController
 
   def index
     @shops = Shop.all
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   def new
@@ -11,10 +13,18 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      redirect_to root_path, notice: 'グループを作成しました'
+      redirect_to root_path
     else
       render = :new
     end
+  end
+
+  def show
+    @shop = Shop.find(params[:id])
+    @lat = @shop.latitude
+    @lng = @shop.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   private
@@ -23,10 +33,12 @@ class ShopsController < ApplicationController
       :name,
       :type_id,
       :prefecture_id,
-      :city,
-      :street,
+      :address,
       :building_name,
-      :feelings)
+      :feelings,
+      :latitude,
+      :longitude
+    )
   end
 
 
