@@ -2,8 +2,6 @@ class ShopsController < ApplicationController
 
   def index
     @shops = Shop.all
-    gon.lat = @lat
-    gon.lng = @lng
   end
 
   def new
